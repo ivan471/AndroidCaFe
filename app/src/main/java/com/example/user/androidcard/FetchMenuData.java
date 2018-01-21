@@ -26,7 +26,7 @@ public class FetchMenuData extends AsyncTask<Void, Void, String> {
         try{
             URL url = null;
             try {
-                url=new URL("http://560057.youcanlearnit.net/service/json/itemsfeed.php");
+                url=new URL("http://560057.youcanlearnit.net/services/json/itemsfeed.php");
             }catch (MalformedURLException e){
                 e.printStackTrace();
             }

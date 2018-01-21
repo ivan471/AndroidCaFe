@@ -32,16 +32,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
         this.menu = itemmenu;
     }
     @Override
-    public RecyclerAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_item,parent,false);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapter.MyViewHolder holder, int position) {
-        Menu current=menu.get(position);
-        holder.setdata(current,position);
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        Menu current = menu.get(position);
+        holder.setData(current,position);
         holder.setListeners();
     }
 
@@ -60,15 +60,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.MyView
             super(itemView);
             this.itemView = itemView;
             name=(TextView)itemView.findViewById(R.id.tvName);
-            kategori=(TextView)itemView.findViewById(R.id.tvdescription);
-            price=(TextView)itemView.findViewById(R.id.tvprice);
+            kategori=(TextView)itemView.findViewById(R.id.tvDescription);
+            thumbnail=(ImageView)itemView.findViewById(R.id.img_row);
+            price=(TextView)itemView.findViewById(R.id.tvPrice);
         }
-        public void setdata(Menu current, int position) {
-            String imageurl = "http://560057.youcanlearnit.net/service/images/"+current.getImage();
-            Glide.with(context).load(imageurl).into(thumbnail);
+        public void setData(Menu current, int position) {
+            String imageurl = "http://560057.youcanlearnit.net/services/images/"+current.getImage();
+                Glide.with(context).load(imageurl).into(thumbnail);
             this.name.setText(current.getItemName());
             this.kategori.setText(current.getCategory());
-            this.price.setText(current.getPrice());
+            this.price.setText("$"+current.getPrice());
             this.position = position;
             this.current=current;
 
